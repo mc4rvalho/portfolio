@@ -1,60 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Matheus Carvalho">
-  <meta name="description" content="Portfolio de Matheus Carvalho, desenvolvedor Full Stack especializado em criar experiências digitais incríveis. Conheça meus projetos e entre em contato.">
-  <meta name="robots" content="index, follow">
-  <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">
-  <title>Portfólio de Matheus Carvalho</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Matheus Carvalho" />
+    <meta
+      name="description"
+      content="Portfolio de Matheus Carvalho, desenvolvedor Full Stack especializado em criar experiências digitais incríveis. Conheça meus projetos e entre em contato."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg" />
+    <title>Portfólio de Matheus Carvalho</title>
+  </head>
+  <body>
+    <!-- Cabeçalho da Página (header) -->
+    <header>
+      <div class="menu-content">
+        <!-- TÍTULO -->
+        <a href="index.html" id="titulo">Portfólio</a>
 
-  <!-- Cabeçalho da Página (header) -->
-  <header>
-
-    <div class="menu-content">
-
-      <!-- TÍTULO -->
-       <a href="index.html" id="titulo">Portfólio</a>
-
-       <!-- MENU -->
+        <!-- MENU -->
         <nav>
           <ul class="menu-list">
-          <li><a href="#hero">Início</a></li>
-          <li><a href="#about">Sobre</a></li>
-          <li><a href="#projects">Projetos</a></li>
-          <li><a href="#contact">Contato</a></li>
+            <li><a href="#hero">Início</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#contact">Contato</a></li>
           </ul>
         </nav>
-    </div>
+      </div>
+    </header>
 
-  </header>
+    <!-- Seção Principal da Página (main) -->
+    <main>
+      <!-- Seção de Boas Vindas -->
+      <section id="hero" class="section-container hero-container">
+        <!-- BOAS VINDAS -->
+        <article class="hero-content">
+          <span>👋🏽 Olá, eu sou o Matheus Carvalho</span>
+          <h1>Desenvolvedor Full Stack</h1>
+          <p>
+            Transformo ideias em código e crio experiências digitais incríveis.
+          </p>
 
-  <!-- Seção Principal da Página (main) -->
-   <main>
+          <div class="buttons-container">
+            <a href="#contact" class="button">Entre em Contato</a>
+            <a href="#about" class="button-outline">Saiba Mais...</a>
+          </div>
+        </article>
 
-    <!-- Seção de Boas Vindas -->
-     <section id="hero">
+        <figure class="hero-image">
+          <img
+            src="./assets/img/foto_dev_man.svg"
+            alt="Foto do autor."
+            class="float-animation"
+          />
+        </figure>
+      </section>
 
-     </section>
+      <!-- Seção Sobre o autor -->
+      <section id="about"></section>
 
-     <!-- Seção Sobre o autor -->
-     <section id="about">
+      <!-- Seção Projetos do autor -->
+      <section id="projects"></section>
 
-     </section>
-
-     <!-- Seção Projetos do autor -->
-     <section id="projects">
-
-     </section>
-
-     <!-- Seção Formulário de Contato e Redes Sociais -->
-     <section id="contato">
-
-     </section>
-     
-   </main>
-</body>
+      <!-- Seção Formulário de Contato e Redes Sociais -->
+      <section id="contato"></section>
+    </main>
+  </body>
 </html>
