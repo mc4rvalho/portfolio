@@ -218,7 +218,7 @@ header a:hover {
   color: var(--gray-400);
 }
 
-.hero-imagem {
+.hero-image {
   display: flex;
   flex: 1;
   justify-content: center;
@@ -258,7 +258,7 @@ header a:hover {
   flex: 0 0 17.5rem;
 }
 
-.about-imagem img {
+.about-image img {
   width: 100%;
   border: 0.35rem solid var(--purple-500);
   border-radius: var(--radius-full);
