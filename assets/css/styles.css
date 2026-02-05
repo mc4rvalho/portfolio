@@ -225,10 +225,9 @@ header a:hover {
 .hero-image {
   display: flex;
   flex: 1;
-  justify-content: center;
+  justify-content: flex-end; /* Alterado para alinhar à direita no desktop */
 }
 
-/* Correção aplicada aqui conforme conversa anterior */
 .hero-image img {
   width: 100%;
   max-width: 450px;
@@ -267,7 +266,7 @@ header a:hover {
 .about-image img {
   width: 100%;
   border: 0.35rem solid var(--purple-500);
-  border-radius: var(--radius-lg); /* Ajuste para combinar com o modelo */
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
 }
 
@@ -597,51 +596,68 @@ footer {
 /* RESPONSIVIDADE (Mobile & Tablet) */
 /* ========================================= */
 
+/* Ajustes para Tablets (Telas até 1024px) */
 @media screen and (max-width: 1024px) {
-  /* Ajustes Gerais para Tablets */
   .section-container {
     padding: var(--spacing-lg) var(--spacing-md);
   }
 
+  /* Ajuste no texto para não ficar gigante em tablets */
   .hero-content h1 {
-    font-size: var(--text-3xl);
+    font-size: var(--text-3xl); /* Mantém grande, mas controlado */
   }
 }
 
+/* Ajustes para Celulares (Telas até 768px) */
 @media screen and (max-width: 768px) {
-  /* MENU: Ocultar em telas pequenas (necessitaria JS para toggle) */
+  /* 1. MENU: Ocultar em telas pequenas */
   .menu-list {
     display: none;
   }
 
-  /* SECTION HERO: Empilhar verticalmente e centralizar */
+  /* Centraliza o logo no topo se o menu sumir */
+  .menu-content {
+    justify-content: center;
+  }
+
+  /* 2. SECTION HERO (INÍCIO) */
   .hero-container {
     flex-direction: column; /* Texto em cima, Imagem embaixo */
     text-align: center;
     justify-content: center;
     gap: var(--spacing-lg);
+    /* Remove padding lateral excessivo para aproveitar a tela */
+    padding: var(--spacing-lg) var(--spacing-sm);
   }
 
   .hero-content {
-    max-width: 100%; /* Permite ocupar a largura toda */
-    align-items: center; /* Centraliza botões */
+    max-width: 100%;
+    align-items: center; /* Centraliza botões e textos */
+  }
+
+  /* Reduz o tamanho do título no celular */
+  .hero-content h1 {
+    font-size: var(--text-2xl);
   }
 
   .hero-image {
     width: 100%;
+    justify-content: center;
     margin-top: var(--spacing-md);
   }
 
   .hero-image img {
-    max-width: 280px; /* Reduz imagem no mobile */
+    max-width: 280px; /* Garante que a imagem caiba na tela */
   }
 
+  /* Garante que os botões quebrem linha se a tela for muito estreita */
   .buttons-container {
     justify-content: center;
+    flex-wrap: wrap;
     width: 100%;
   }
 
-  /* SECTION ABOUT: Coluna Única */
+  /* 3. SECTION ABOUT (SOBRE) */
   .about-container {
     flex-direction: column;
     padding: var(--spacing-lg);
@@ -656,30 +672,36 @@ footer {
   }
 
   .about-image img {
-    width: 15rem; /* Tamanho fixo menor para o avatar */
+    width: 15rem;
     height: 15rem;
     object-fit: cover;
   }
 
   .about-buttons-data {
-    flex-direction: column; /* Botões em cima, dados embaixo */
+    flex-direction: column;
     gap: var(--spacing-md);
     width: 100%;
   }
 
+  /* Centraliza botões do Sobre */
   .about-buttons-data .buttons-container {
     justify-content: center;
     margin: 0;
   }
 
-  .data-container {
-    width: 100%;
-    justify-content: space-around; /* Espalha os números uniformemente */
+  /* Força o botão a não ter margem lateral automática no mobile */
+  .about-buttons-data .button {
+    margin-right: 0;
   }
 
-  /* SECTION CONTACT: Coluna Única */
+  .data-container {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  /* 4. SECTION CONTACT (CONTATO) */
   .contact-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Uma coluna só */
     gap: var(--spacing-xl);
     text-align: center;
   }
@@ -694,7 +716,7 @@ footer {
     height: 4rem;
   }
 
-  /* SUCCESS PAGE MOBILE */
+  /* 5. SUCCESS PAGE MOBILE */
   .success-content h1 {
     font-size: var(--text-2xl);
   }
