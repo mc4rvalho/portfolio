@@ -190,13 +190,17 @@ header a:hover {
 .hero-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--spacing-2xl);
   min-height: calc(100vh - 5rem);
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .hero-content {
   display: flex;
   flex: 1;
+  max-width: 600px;
   flex-direction: column;
   gap: var(--spacing-md);
 }
@@ -224,10 +228,11 @@ header a:hover {
   justify-content: center;
 }
 
-.hero-imagem img {
+/* Correção aplicada aqui conforme conversa anterior */
+.hero-image img {
   width: 100%;
-  max-width: 100%;
-  border-radius: var(--radius-xl);
+  max-width: 450px;
+  height: auto;
 }
 
 @keyframes float {
@@ -247,9 +252,10 @@ header a:hover {
 
 .about-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--spacing-2xl);
   margin: var(--spacing-2xl) auto;
+  padding: var(--spacing-2xl);
   border-radius: var(--radius-lg);
   background-color: var(--gray-200);
 }
@@ -261,7 +267,7 @@ header a:hover {
 .about-image img {
   width: 100%;
   border: 0.35rem solid var(--purple-500);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-lg); /* Ajuste para combinar com o modelo */
   box-shadow: var(--shadow-lg);
 }
 
@@ -344,6 +350,7 @@ header a:hover {
 
 .project-card:hover {
   box-shadow: var(--shadow-lg);
+  transform: translateY(-5px);
 }
 
 .project-image {
@@ -351,17 +358,18 @@ header a:hover {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 10rem;
-  background: linear-gradient(135deg, var(--purple-50) 0%, var(--purple-100) 100%);
+  height: 12rem;
+  background: linear-gradient(
+    135deg,
+    var(--purple-50) 0%,
+    var(--purple-100) 100%
+  );
 }
 
 .project-image img {
-  width: 75%;
-  height: 75%;
-  max-width: 7rem;
-  max-height: 7rem;
+  width: 50%;
+  max-width: 6rem;
   object-fit: contain;
-  transition: transform 0.3s ease;
 }
 
 .project-content {
@@ -369,7 +377,7 @@ header a:hover {
   flex: 1;
   flex-direction: column;
   padding: var(--spacing-md);
-  text-align: left;
+  text-align: center;
 }
 
 .project-content h3 {
@@ -387,8 +395,10 @@ header a:hover {
 
 .project-tags {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
 }
 
 .tag {
@@ -405,7 +415,7 @@ header a:hover {
   justify-content: center;
   align-items: center;
   gap: 0.75rem;
-  margin-top: var(--spacing-sm);
+  margin-top: var(--spacing-md);
 }
 
 .swiper-wrapper {
@@ -418,17 +428,20 @@ header a:hover {
 }
 
 /* Botões do Swiper (navegação) */
-.swiper-button-next, .swiper-button-prev {
+.swiper-button-next,
+.swiper-button-prev {
   width: 3rem;
   height: 3rem;
 }
 
-.swiper-button-next:after, .swiper-button-prev:after {
+.swiper-button-next:after,
+.swiper-button-prev:after {
   font-size: var(--text-lg);
   color: var(--purple-500);
 }
 
-.swiper-button-next:hover:after, .swiper-button-prev:hover:after {
+.swiper-button-next:hover:after,
+.swiper-button-prev:hover:after {
   color: var(--purple-800);
 }
 
@@ -481,15 +494,8 @@ header a:hover {
 }
 
 .social-icon:hover img {
-  filter: 
-  brightness(0)
-  saturate(100%)
-  invert(42%)
-  sepia(93%)
-  saturate(1352%)
-  hue-rotate(243deg)
-  brightness(79%)
-  contrast(91%);
+  filter: brightness(0) saturate(100%) invert(42%) sepia(93%) saturate(1352%)
+    hue-rotate(243deg) brightness(79%) contrast(91%);
 }
 
 /* Formulário */
@@ -504,7 +510,8 @@ form label {
   font-weight: 600;
 }
 
-form input, form textarea {
+form input,
+form textarea {
   width: 100%;
   padding: 0.5rem var(--spacing-sm);
   border: 0.25rem solid var(--gray-200);
@@ -514,7 +521,8 @@ form input, form textarea {
   transition: border-color 0.3s ease;
 }
 
-form input:focus, form textarea:focus {
+form input:focus,
+form textarea:focus {
   border-color: var(--purple-500);
   outline: none;
 }
@@ -581,12 +589,117 @@ footer {
 .success-icon img {
   width: 6rem;
   height: 6rem;
-  filter: brightness(0)
-  saturate(100%)
-  invert(11%)
-  sepia(69%)
-  saturate(3759%)
-  hue-rotate(256deg)
-  brightness(101%)
-  contrast(96%);
+  filter: brightness(0) saturate(100%) invert(11%) sepia(69%) saturate(3759%)
+    hue-rotate(256deg) brightness(101%) contrast(96%);
+}
+
+/* ========================================= */
+/* RESPONSIVIDADE (Mobile & Tablet) */
+/* ========================================= */
+
+@media screen and (max-width: 1024px) {
+  /* Ajustes Gerais para Tablets */
+  .section-container {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .hero-content h1 {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* MENU: Ocultar em telas pequenas (necessitaria JS para toggle) */
+  .menu-list {
+    display: none;
+  }
+
+  /* SECTION HERO: Empilhar verticalmente e centralizar */
+  .hero-container {
+    flex-direction: column; /* Texto em cima, Imagem embaixo */
+    text-align: center;
+    justify-content: center;
+    gap: var(--spacing-lg);
+  }
+
+  .hero-content {
+    max-width: 100%; /* Permite ocupar a largura toda */
+    align-items: center; /* Centraliza botões */
+  }
+
+  .hero-image {
+    width: 100%;
+    margin-top: var(--spacing-md);
+  }
+
+  .hero-image img {
+    max-width: 280px; /* Reduz imagem no mobile */
+  }
+
+  .buttons-container {
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* SECTION ABOUT: Coluna Única */
+  .about-container {
+    flex-direction: column;
+    padding: var(--spacing-lg);
+    gap: var(--spacing-lg);
+  }
+
+  .about-image {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-image img {
+    width: 15rem; /* Tamanho fixo menor para o avatar */
+    height: 15rem;
+    object-fit: cover;
+  }
+
+  .about-buttons-data {
+    flex-direction: column; /* Botões em cima, dados embaixo */
+    gap: var(--spacing-md);
+    width: 100%;
+  }
+
+  .about-buttons-data .buttons-container {
+    justify-content: center;
+    margin: 0;
+  }
+
+  .data-container {
+    width: 100%;
+    justify-content: space-around; /* Espalha os números uniformemente */
+  }
+
+  /* SECTION CONTACT: Coluna Única */
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    text-align: center;
+  }
+
+  .social-container {
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .social-icon {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  /* SUCCESS PAGE MOBILE */
+  .success-content h1 {
+    font-size: var(--text-2xl);
+  }
+
+  .success-content h2 {
+    font-size: var(--text-base);
+  }
 }
