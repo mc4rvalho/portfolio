@@ -4,7 +4,6 @@ const about = document.querySelector("#about");
 // Seletor da Seção Projects (Carrossel)
 const swiperWrapper = document.querySelector(".swiper-wrapper");
 
-// --- Função Sobre Mim ---
 async function getAboutGitHub() {
   try {
     const resposta = await fetch("https://api.github.com/users/mc4rvalho");
@@ -53,13 +52,10 @@ async function getAboutGitHub() {
   }
 }
 
-// Chama a função About
 getAboutGitHub();
 
-// --- Função Projetos ---
 async function getProjectsGitHub() {
   try {
-    // Buscando 6 repositórios ordenados por atualização
     const resposta = await fetch(
       "https://api.github.com/users/mc4rvalho/repos?sort=updated&per_page=6",
     );
@@ -82,18 +78,14 @@ async function getProjectsGitHub() {
     };
 
     repositories.forEach((repository) => {
-      // Verifica a linguagem, se for null usa 'GitHub'
       const languageShow = repository.language || "GitHub";
-      // Busca o ícone no objeto, se não achar usa 'github'
       const config = languages[repository.language] || { icone: "github" };
       const urlIcon = `./assets/icons/languages/${config.icone}.svg`;
 
-      // Descrição alternativa caso o repo não tenha descrição
       const description = repository.description
         ? repository.description
         : "Projeto desenvolvido para estudos e prática de programação.";
 
-      // Monta o HTML do Card
       const html = `
         <div class="swiper-slide">
           <article class="project-card">
@@ -111,7 +103,6 @@ async function getProjectsGitHub() {
 
               <div class="project-buttons">
                 <a href="${repository.html_url}" target="_blank" class="button button-sm">GitHub</a>
-                
                 ${repository.homepage ? `<a href="${repository.homepage}" target="_blank" class="button-outline button-sm">Deploy</a>` : ""}
               </div>
             </div>
@@ -119,13 +110,65 @@ async function getProjectsGitHub() {
         </div>
       `;
 
-      // Adiciona o card ao wrapper
       swiperWrapper.innerHTML += html;
     });
+
+    iniciarSwiper();
   } catch (error) {
     console.error("Erro ao buscar projetos:", error);
   }
 }
 
-// Chama a função Projetos
 getProjectsGitHub();
+
+function iniciarSwiper() {
+  const swiperContainer = document.querySelector(".projects-swiper");
+  if (swiperContainer.swiper) {
+    swiperContainer.swiper.destroy(true, true);
+  }
+
+  new Swiper(".projects-swiper", {
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    spaceBetween: 24,
+    centeredSlides: false,
+    loop: true,
+    watchOverflow: true,
+
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 20,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 30,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 40,
+      },
+    },
+
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      dynamicBullets: true,
+    },
+
+    autoplay: {
+      delay: 5000,
+      pauseOnMouseEnter: true,
+      disableOnInteraction: false,
+    },
+
+    grabCursor: true,
+    slidesOffsetBefore: 0,
+    slidesOffsetAfter: 0,
+  });
+}
