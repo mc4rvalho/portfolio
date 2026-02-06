@@ -227,8 +227,6 @@ formulario.addEventListener("submit", function (event) {
     submitButton.disabled = true;
     submitButton.textContent = "Enviando...";
 
-    setTimeout(() => {
-      window.location.href = "success.html";
-    }, 1500);
+    formulario.submit();
   }
 });
